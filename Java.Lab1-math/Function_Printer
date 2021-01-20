@@ -1,0 +1,38 @@
+public class FirstLab{
+    public static void printer(boolean f){ //Выводит при истине звездочку, при лжи - пустое поле
+        if (f){
+            System.out.print(" * ");
+        }
+        else{
+            System.out.print("   ");
+        }
+    }
+    public static int func1(int x){ // первая часть заданной функции
+        x = x % 30;
+        return (10 - Math.abs(2*x - 30));
+    }
+    public static int func2(int x){ // вторая часть заданной функции
+        x = x % 30;
+        if (x >= 10){
+            x = 30 - x;
+        }
+        double fy = -1 * Math.sqrt(100 - x * x);
+        return (int) Math.rint(fy);
+    }
+    public static void main(String[] args){ // посимвольный обход каждой строчки. короче, это поле, на котором уже выводятся звездочки
+        for (int j = 10; j >= -10; j--){
+            for (int x = 0; x <= 80; x++){
+                int fy;
+                if (x % 30 <= 10 || x % 30 >= 20){
+                    fy = func2(x);
+                }
+                else {
+                    fy = func1(x);
+                }
+                boolean f = (j == fy);
+                printer(f);
+            }
+            System.out.println();
+        }
+    }
+}
